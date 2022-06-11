@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY ./app /app/app
 
-CMD gunicorn -w 4 -b :$PORT app:app
+CMD gunicorn -w 4 -b :$PORT "app:create_app()"
