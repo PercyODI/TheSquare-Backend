@@ -6,9 +6,10 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-COPY ./run.py /app/run.py
+# COPY ./run.py /app/run.py
 COPY ./app /app/app
 
-ENTRYPOINT [ "python" ]
+EXPOSE 80
 
-CMD [ "run.py" ]
+ENTRYPOINT [ "gunicorn" ]
+CMD [ "-w", "4", "-b", ":80", "app:app" ]
