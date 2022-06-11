@@ -1,0 +1,18 @@
+name: deploy-backend
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Push to dokku
+        uses: dokku/github-action@master
+        with:
+          git_remote_url: 'ssh://dokku@hutsonapps.com:22/thesquare-backend'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
