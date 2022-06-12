@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import os
 
+
 def create_app(test_config=None):
     app = Flask(__name__)
     env_config = os.getenv("APP_SETTINGS", "config.DevelopmentConfig")
@@ -17,11 +18,6 @@ def create_app(test_config=None):
     def hello_world():
         return jsonify({
             "version": "0.0.1"
-        })
-    @app.route("/dburl")
-    def dburl():
-        return jsonify({
-            "dburl": app.config.get("DATABASE_URL")
         })
 
     return app
