@@ -2,9 +2,10 @@ import os
 
 
 class Config:
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
     DEBUG = False
     DEVELOPMENT = False
-    DATABASE_URL = os.getenv("DATABASE_URL")
+    TESTING = False
 
 
 class ProductionConfig(Config):
@@ -18,3 +19,7 @@ class StagingConfig(Config):
 class DevelopmentConfig(Config):
     DEBUG = True
     DEVELOPMENT = True
+
+
+class TestingConfig(Config):
+    TESTING = True
