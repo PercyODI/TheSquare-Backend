@@ -8,7 +8,6 @@ tasks:
     init: |
       docker-compose pull
       pip install -r requirements.txt
-      flask init-db
     command: |
       docker-compose up -d
       export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres"
